@@ -1,5 +1,6 @@
 const Koa = require("koa");
 const app = new Koa();
+
 const middleware = function (ctx, next) {
   console.log("middleware");
   console.log(ctx.request.path);
