@@ -17,15 +17,18 @@
     "babel-loader": "^10.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.3",
-    "koa": "^2.16.0",
+    "koa": "^2.16.1",
     "koa-body": "^6.0.1",
+    "koa-compose": "^4.1.0",
     "koa-json": "^2.0.2",
     "koa-router": "^13.0.1",
+    "webpack-merge": "^6.0.1",
     "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.9",
-    "webpack": "^5.99.2",
+    "terser-webpack-plugin": "^5.3.14",
+    "webpack": "^5.99.5",
     "webpack-cli": "^6.0.1"
   }
 }

@@ -5,6 +5,7 @@ const { koaBody } = require("koa-body");
 const json = require("koa-json");
 const app = new Koa();
 const router = new Router();
+import compose from "koa-compose";
 
 router.prefix("/api");
 
@@ -36,8 +37,15 @@ router.post("/post", async (ctx) => {
   };
 });
 
-app.use(koaBody());
-app.use(cors()); // 允许跨域(默认所有请求都允许跨域,可以传入参数来指定允许跨域的请求)
-app.use(json({ pretty: false, param: "pretty" }));
+
+
+const middleware=compose([
+  koaBody(),
+  cors(), // 允许跨域(默认所有请求都允许跨域,可以传入参数来指定允许跨域的请求)
+  json({ pretty: false, param: "pretty" })
+])
+
+
 app.use(router.routes()).use(router.allowedMethods()); // 允许所有方法;
+app.use(middleware);
 app.listen(3000);
