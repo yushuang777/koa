@@ -1,9 +1,9 @@
-const webpackMerge = require("webpack-merge");
+const {merge} = require("webpack-merge");
 const base = require("./webpack.config.base");
 const terserPlugin = require("terser-webpack-plugin");
-const webpackconfig =webpackMerge(base,{
+const webpackconfig =merge(base,{
   mode: "production",
-  devtool: "eval-source-map",
+  devtool: "source-map",
   stats:{children:false},
   optimization:{
     minimize:true,
@@ -21,7 +21,17 @@ const webpackconfig =webpackMerge(base,{
           beautify:false
         }
       }
-    })]
+    })],
+    splitChunks:{
+      cacheGroups:{
+        commons:{
+         name:"commons",
+         chunks:"initial",
+         minChunks:3,
+         enforce:true
+        }
+      }
+    }
   }
 })
-module,exports = webpackconfig;
+module.exports = webpackconfig;
